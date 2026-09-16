@@ -15,3 +15,29 @@ model = ChatHuggingFace(llm=llm)
 result = model.invoke("give me a plane for the data science prepration ")
 
 print(result.content)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
