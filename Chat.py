@@ -12,10 +12,22 @@ llm=HuggingFaceEndpoint(
 )
 
 model=ChatHuggingFace(llm=llm)
+# while True:
+#     user_input=input("You :")
+#     if user_input=="exit":
+#         break
+
+#     result=model.invoke(user_input)
+#     print("AI : ",result.content)
+
+# This cahtbot is not saving the history os the conversation 
+
+chat_history=[]
 while True:
     user_input=input("You :")
+    chat_history.append(user_input)
     if user_input=="exit":
         break
-
-    result=model.invoke(user_input)
-    print("AI : ",result.content)
+    result=model.invoke(chat_history)
+    chat_history.append(result)
+    print(result.content)
