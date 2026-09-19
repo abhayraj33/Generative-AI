@@ -1,10 +1,7 @@
-from pydoc import text
-from unittest import result
-from click import prompt
 from langchain_huggingface import ChatHuggingFace,HuggingFaceEndpoint
 from langchain_core.prompts import PromptTemplate
 from dotenv import load_dotenv
-from regex import template
+from langchain_core.output_parsers import StrOutputParser
 
 load_dotenv()
 
@@ -29,13 +26,25 @@ template2=PromptTemplate(
     input_variables=["text"]
 )
 
-prompt1=template1.invoke({"topic:Black hole"})
+# prompt1=template1.invoke({"topic:Black hole"})
 
-result=model.invoke(prompt1)
+# result=model.invoke(prompt1)
 
-prompt2=template2.invoke({"text":result.content})
+# prompt2=template2.invoke({"text":result.content})
 
-result1=model.invoke(prompt2)
+# result1=model.invoke(prompt2)
 
 
-print(result1.content)
+# print(result1.content)
+
+
+
+#  if we use the stroutput_parsrer then we canj avoid the long way of 
+
+parser=StrOutputParser()
+
+chain=template1 | model | parser | template2 | model | parser
+
+result=chain.invoke({"topic:Black hole"})
+
+print(result)
