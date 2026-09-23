@@ -12,14 +12,25 @@ load_dotenv()
 api_key=os.getenv("OPENAI_API_KEY")
  # we are using it  because we wanted to use two different model here we are using nvidia api key throught the openroughter
 
-model=ChatOpenAI(
-    model="nvidia/nemotron-3-ultra-550b-a55b:free",
-    openai_api_base="https://openrouter.ai/api/v1",
-    openai_api_key=api_key
+# model=ChatOpenAI(
+#     model="nvidia/nemotron-3-ultra-550b-a55b:free",
+#     openai_api_base="https://openrouter.ai/api/v1",
+#     openai_api_key=api_key
+# )
+
+llm=HuggingFaceEndpoint(
+    repo_id="openai/gpt-oss-120b",
+    task="text-generation",
+    provider="auto",
 )
+model=ChatHuggingFace(llm=llm)
+model1=ChatHuggingFace(llm=llm)
 
 
-model1=ChatGoogleGenerativeAI(model="gemini-3.5-flash-lite")
+
+
+
+# model1=ChatGoogleGenerativeAI(model="gemini-3.5-flash-lite")
 
 parser=StrOutputParser()
 
