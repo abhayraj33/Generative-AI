@@ -17,15 +17,18 @@ model=ChatHuggingFace(llm=llm)
 parser=StrOutputParser()
 
 prompt1=PromptTemplate(
-    template="make a sentiment analyse and tell wheter it is a negative or positive do not give anythin insted of negative or positive i wanted to reveive only either negative or positive nothing else text as a output \n {feedback}"
+    template="make a sentiment analyse and tell wheter it is a negative or positive do not give anythin insted of negative or positive i wanted to reveive only either negative or positive nothing else text as a output \n {feedback}",
+    input_variables=["feedback"]
 )
 
 prompt2=PromptTemplate(
-    template="write a message for the positive feedback  of our product or service \n{feedback} "
+    template="write a message for the positive feedback  of our product or service \n{feedback} ",
+    input_variables=["feedback"]
 )
 
 prompt3=PromptTemplate(
-    template="write a message for the negative feedback  of our product or service \n{feedback} "
+    template="write a message for the negative feedback  of our product or service \n{feedback} ",
+    input_variables=["feedback"]
 )
 
 feedback="today i went to the burgerking outlet with my mom and she was very to be there thanks to the burger king"
