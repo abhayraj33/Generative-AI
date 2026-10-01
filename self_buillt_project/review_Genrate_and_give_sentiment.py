@@ -26,6 +26,14 @@ pydantic_parser=PydanticOutputParser(pydantic_object=Review)
 
 
 
+
+
+
+
+
+
+
+
 prompt=PromptTemplate(
     template="generate the feedbak for the producct \n {product} \n the probability of generation negative feedback is 0.5 and the probability for generating the feedback for the negative feeedback is 0.5",
     input_Variables=["product"]
