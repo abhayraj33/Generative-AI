@@ -7,6 +7,8 @@ load_dotenv()
 
 llm=HuggingFaceEndpoint(
     repo_id="openai/gpt-oss-120b",
+
+    
     task="text-generation",
     provider="auto",
     huggingfacehub_api_token=os.getenv("HUGGINGFACEHUB_API_TOKEN")
